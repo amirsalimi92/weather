@@ -23,9 +23,9 @@ body {
   grid-template-rows: repeat(6, 1fr);
   grid-template-areas:
     "dayWeek . . setting"
-    "datum . . ."
+    "datum . sign ."
     "location . sign ."
-    ". . sign ."
+    ". . . ."
     ". . degree ."
     ". . desc .";
   z-index: 1;
@@ -86,18 +86,44 @@ body {
 
 .setting {
   grid-area: setting;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: azure;
+  font-size: 3rem;
+}
+
+.setting > i {
+  cursor: pointer;
 }
 
 .sign {
   grid-area: sign;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 15%;
 }
 
 .degree {
   grid-area: degree;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 25%;
+  color: azure;
+  font-size: 5rem;
+  font-weight: bolder;
 }
 
 .desc {
   grid-area: desc;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-right: 25%;
+  color: azure;
+  font-size: 3rem;
 }
 
 .back {

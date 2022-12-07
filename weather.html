@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="medias/logo.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles/style.css">
     <title>Weather | Amir Salimi</title>
 </head>
@@ -21,10 +24,14 @@
                     <div class="month">2</div>
                 </div>
                 <div class="location">4</div>
-                <div class="setting">5</div>
-                <div class="sign">6</div>
-                <div class="degree">7</div>
-                <div class="desc">8</div>
+                <div class="setting">
+                    <i class="fa-sharp fa-solid fa-gear"></i>
+                </div>
+                <div class="sign">
+                    <img src="styles/icon/type_one_heavy_rain.png" alt="">
+                </div>
+                <div class="degree">17 <span>&#8451</span></div>
+                <div class="desc">Rainy</div>
             </div>
         </div>
         <div class="back">
@@ -34,8 +41,9 @@
         </div>
     </div>
 
-    <!-- <script src="scripts/responsive.js"></script> -->
+    <script src="scripts/responsive.js"></script>
     <script src="scripts/timeLocation.js"></script>
+    <script src="scripts/location.js"></script>
 </body>
 
 </html>
