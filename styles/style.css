@@ -105,7 +105,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(247, 172, 10);
+  color: rgb(51, 37, 8);
   font-size: 3rem;
 }
 
@@ -169,34 +169,141 @@ body {
   display: grid;
   transition: 2s;
   grid-template-columns: 1fr;
-  grid-template-rows:
-    minmax(1fr, 2fr) minmax(1.5fr, 2.5fr) minmax(3.5fr, 6.5fr)
-    minmax(1fr, 2fr);
+  grid-template-rows: auto auto auto;
   grid-template-areas:
     "searchText"
     "searchBar"
-    "."
     "github";
 }
 
 .searchText {
   grid-area: searchText;
+  color: azure;
+  font-size: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding-left: 5%;
+  padding-top: 10%;
 }
 
 .searchBar {
   grid-area: searchBar;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 5%;
+  max-height: 20px;
+}
+
+.searchBar > input {
+  width: 65%;
+  border-radius: 0.75em;
+  line-height: 2em;
+  height: 2em;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 0 1em;
+  background-color: rgb(158, 161, 161);
+  opacity: 0.5;
+}
+
+.searchBar > button {
+  border-radius: 50%;
+  border: none;
+  height: 4em;
+  width: 4em;
+  background-color: gray;
+  cursor: pointer;
+  color: azure;
 }
 
 .github {
   grid-area: github;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   color: bisque;
   font-size: 1.5rem;
+  padding-bottom: 7%;
 }
 
 .github > a {
   text-decoration: none;
   font-weight: bold;
   color: chartreuse;
+}
+
+@media only screen and (max-width: 550px) {
+  .main {
+    max-height: 98vh;
+  }
+
+  .top {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 1.5fr 0.5fr 1fr 0.5fr 0.5fr;
+    grid-template-areas:
+      "setting"
+      "sign"
+      "desc"
+      "degree"
+      "dayWeek"
+      "location";
+  }
+
+  .menu {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas:
+      "back"
+      "user";
+  }
+
+  .datum {
+    display: none;
+  }
+
+  .setting {
+    justify-content: flex-end;
+    padding-right: 15%;
+  }
+
+  .sign {
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .desc {
+    font-size: 2rem;
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .degree {
+    font-size: 3rem;
+    padding-right: 0;
+  }
+
+  .temp {
+    justify-content: center;
+  }
+
+  .feels {
+    justify-content: center;
+  }
+
+  .dayWeek {
+    font-size: 3rem;
+  }
+
+  .location {
+    font-size: 1rem;
+  }
+  .searchText {
+    padding-top: 3%;
+  }
+
+  .github {
+    padding-bottom: 0;
+  }
 }
