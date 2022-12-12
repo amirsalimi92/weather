@@ -1,76 +1,54 @@
-let x = document.querySelector(".location");
+let locationN = document.querySelector(".location");
+let temp = document.querySelector(".temp");
+let feels = document.querySelector(".feels");
+let desc = document.querySelector(".desc");
+let icon = document.querySelector(".icon");
 
-function showPosition(position) {
-  x.innerHTML =
-    "Latitude: " +
-    position.coords.latitude +
-    "<br>Longitude: " +
-    position.coords.longitude;
-}
+const API_Code = "045024c045940c0f70d0f1e4dd3c9fef";
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
+navigator.geolocation.getCurrentPosition((position) => {
+  let lat = position.coords.latitude;
+  let long = position.coords.longitude;
+  localStorage.setItem("lat", lat);
+  localStorage.setItem("lon", long);
+});
 
-getLocation();
+let runAPI = {
+  setData: function (lat, lon, code) {
+    fetch(
+      "https://api.openweathermap.org/data/2.5/weather?lat=" +
+        lat +
+        "&lon=" +
+        lon +
+        "&units=metric&appid=" +
+        code
+    )
+      .then((Response) => Response.json())
+      .then((data) => this.giveData(data));
+  },
 
-function displayLocation(latitude, longitude) {
-  var request = new XMLHttpRequest();
+  giveData: function (data) {
+    cityName = data.name;
+    temper = data.main.temp.toFixed(1);
+    feelsLike = data.main.feels_like.toFixed(1);
+    descr = data.weather[0]["description"];
+    type = data.weather[0]["main"];
+    iconCode = data.weather[0].icon;
 
-  var method = "GET";
-  var url =
-    "http://maps.googleapis.com/maps/api/geocode/json?latlng=" +
-    latitude +
-    "," +
-    longitude +
-    "&sensor=true";
-  var async = true;
-
-  request.open(method, url, async);
-  request.onreadystatechange = function () {
-    if (request.readyState == 4 && request.status == 200) {
-      var data = JSON.parse(request.responseText);
-      var address = data.results[0];
-      document.write(address.formatted_address);
+    locationN.innerHTML = cityName;
+    temp.innerHTML = temper + "  <span>&#8451</span>";
+    feels.innerHTML = "Feels like: " + feelsLike + "  <span>&#8451</span>";
+    desc.innerHTML = descr;
+    if (iconCode != "01n") {
+      icon.src = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
     }
-  };
-  request.send();
-}
 
-var successCallback = function (position) {
-  var x = position.coords.latitude;
-  var y = position.coords.longitude;
-  displayLocation(x, y);
+    console.log(data);
+  },
 };
 
-var errorCallback = function (error) {
-  var errorMessage = "Unknown error";
-  switch (error.code) {
-    case 1:
-      errorMessage = "Permission denied";
-      break;
-    case 2:
-      errorMessage = "Position unavailable";
-      break;
-    case 3:
-      errorMessage = "Timeout";
-      break;
-  }
-  document.write(errorMessage);
-};
-
-var options = {
-  enableHighAccuracy: true,
-  timeout: 1000,
-  maximumAge: 0,
-};
-
-navigator.geolocation.getCurrentPosition(
-  successCallback,
-  errorCallback,
-  options
+runAPI.setData(
+  localStorage.getItem("lat"),
+  localStorage.getItem("lon"),
+  API_Code
 );

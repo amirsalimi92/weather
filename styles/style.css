@@ -13,19 +13,23 @@ body {
   grid-template-areas: "user back";
 }
 
+.menu {
+  grid-template-columns: 2fr 1fr;
+}
+
 .user {
   grid-area: user;
 }
 
 .top {
   display: grid;
-  grid-template-columns: 3fr auto 4fr 1fr;
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: 3fr 1fr 4fr 1fr;
+  grid-template-rows: 1fr 1fr 0.5fr auto auto 1fr;
   grid-template-areas:
     "dayWeek . . setting"
     "datum . sign ."
     "location . sign ."
-    ". . . ."
+    ". . degree ."
     ". . degree ."
     ". . desc .";
   z-index: 1;
@@ -34,7 +38,7 @@ body {
 }
 
 .backGround {
-  background-image: url("background/night.png");
+  background-image: url("background/bgNight.jpg");
   min-height: 100%;
   min-width: 100%;
   background-position: center;
@@ -51,19 +55,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  font-size: 5rem;
+  font-size: 6rem;
   color: azure;
   font-weight: bolder;
 }
 
 .datum {
   grid-area: datum;
+  color: azure;
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.insideDatum {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
   grid-template-rows: 1fr;
   grid-template-areas: "day month";
-  color: azure;
-  font-size: 3rem;
 }
 
 .day {
@@ -82,6 +91,13 @@ body {
 
 .location {
   grid-area: location;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: lightgray;
+  overflow: hidden;
 }
 
 .setting {
@@ -89,7 +105,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: azure;
+  color: rgb(247, 172, 10);
   font-size: 3rem;
 }
 
@@ -102,18 +118,35 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-right: 15%;
+  padding-right: 17.5%;
+}
+
+.icon {
+  height: 100%;
+  width: auto;
 }
 
 .degree {
   grid-area: degree;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  color: azure;
+  font-size: 6rem;
+  font-weight: bolder;
+  padding-right: 25%;
+}
+
+.temp {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  padding-right: 25%;
-  color: azure;
-  font-size: 5rem;
-  font-weight: bolder;
+  align-items: flex-end;
+}
+
+.feels {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  font-size: 1.5rem;
 }
 
 .desc {
@@ -127,14 +160,18 @@ body {
 }
 
 .back {
-  background-color: sienna;
   grid-area: back;
   display: none;
+  background-color: rgba(32, 31, 31, 0.7);
+}
+
+.backShow {
+  display: grid;
+  transition: 2s;
   grid-template-columns: 1fr;
-  grid-template-rows: minmax(0.15fr, 0.25fr) minmax(0.15fr, 0.25fr) auto minmax(
-      0.15fr,
-      0.25fr
-    );
+  grid-template-rows:
+    minmax(1fr, 2fr) minmax(1.5fr, 2.5fr) minmax(3.5fr, 6.5fr)
+    minmax(1fr, 2fr);
   grid-template-areas:
     "searchText"
     "searchBar"
@@ -143,16 +180,23 @@ body {
 }
 
 .searchText {
-  background-color: blueviolet;
   grid-area: searchText;
 }
 
 .searchBar {
-  background-color: yellow;
   grid-area: searchBar;
 }
 
 .github {
-  background-color: tomato;
   grid-area: github;
+  display: flex;
+  justify-content: center;
+  color: bisque;
+  font-size: 1.5rem;
+}
+
+.github > a {
+  text-decoration: none;
+  font-weight: bold;
+  color: chartreuse;
 }

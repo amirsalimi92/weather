@@ -14,35 +14,43 @@
 </head>
 
 <body>
-    <div class="main">
+    <div class="main menu">
         <div class="user">
             <div class="backGround"></div>
             <div class="top">
                 <div class="dayWeek">Monday</div>
                 <div class="datum">
-                    <div class="day">1</div>
-                    <div class="month">2</div>
+                    <div class="insideDatum">
+                        <div class="day">1</div>
+                        <div class="month">2</div>
+                    </div>
                 </div>
                 <div class="location">4</div>
                 <div class="setting">
                     <i class="fa-sharp fa-solid fa-gear"></i>
                 </div>
                 <div class="sign">
-                    <img src="styles/icon/type_one_heavy_rain.png" alt="">
+                    <img class="icon" src="styles/icon/type_one_heavy_rain.png" alt="">
                 </div>
-                <div class="degree">17 <span>&#8451</span></div>
+                <div class="degree">
+                    <div class="temp"></div>
+                    <div class="feels"></div>
+                </div>
                 <div class="desc">Rainy</div>
             </div>
         </div>
-        <div class="back">
-            <div class="searchText">9</div>
-            <div class="searchBar">10</div>
-            <div class="github">11</div>
+        <div class="back backShow">
+            <div class="searchText">Search your city:</div>
+            <div class="searchBar">
+                <input type="text">
+            </div>
+            <div class="github">Code on my&nbsp<a href="https://github.com/amirsalimi92/weather" target="_blank">
+                    Github</a></div>
         </div>
     </div>
 
     <script src="scripts/responsive.js"></script>
-    <script src="scripts/timeLocation.js"></script>
+    <script src="scripts/time.js"></script>
     <script src="scripts/location.js"></script>
 </body>
 

@@ -10,8 +10,7 @@ let dayNight = "night";
 
 if (hour > 5 && hour < 18) {
   dayNight = "day";
-  backGround.style["background-image"] =
-    "url('styles/background/city_cloudy.png')";
+  backGround.style["background-image"] = "url('styles/background/bg.jpg')";
 }
 
 //give the name of day like monday, tuesday and...
