@@ -6,3 +6,5 @@ button.addEventListener("click", () => {
   main.classList.toggle("menu");
   back.classList.toggle("backShow");
 });
+
+screen.orientation.lock();
