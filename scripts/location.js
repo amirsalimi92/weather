@@ -6,15 +6,20 @@ let icon = document.querySelector(".icon");
 const newLocation = document.querySelector(".search");
 const newLocBut = document.querySelector(".searchButton");
 
+//API code from open weather map
 const API_Code = "045024c045940c0f70d0f1e4dd3c9fef";
 
+// get the location from Browser
 navigator.geolocation.getCurrentPosition((position) => {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
+
+  // save location in local storage for next using and pass data to other function
   localStorage.setItem("lat", lat);
   localStorage.setItem("lon", long);
 });
 
+// Find the weather data with lat and lon
 function apiLatLon() {
   let runAPI = {
     setData: function (lat, lon, code) {
@@ -42,10 +47,12 @@ function apiLatLon() {
       temp.innerHTML = temper + "  <span>&#8451</span>";
       feels.innerHTML = "Feels like: " + feelsLike + "  <span>&#8451</span>";
       desc.innerHTML = descr;
-      if (iconCode != "01n") {
+
+      // for clear sky we don't need sun icon, because it's not working in night
+      if (iconCode != "01n" && iconCode != "01d") {
         icon.src = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
       }
-
+      // see the all output data of API in console
       // console.log(data);
     },
   };
@@ -57,6 +64,7 @@ function apiLatLon() {
   );
 }
 
+// Find the weather data with the city name
 function apiCity() {
   let runAPIbyCity = {
     setData: function (city, code) {
@@ -85,8 +93,6 @@ function apiCity() {
       if (iconCode != "01n" && iconCode != "01d") {
         icon.src = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
       }
-
-      // console.log(data);
     },
   };
 
