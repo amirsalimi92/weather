@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+
 body {
-  font-family: "Lucida Sans Unicode";
+  font-family: "Fredoka One";
 }
 
 .main {
@@ -41,6 +43,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  filter: blur(10px);
   position: fixed;
   top: 0;
   left: 0;
@@ -54,7 +57,6 @@ body {
   align-items: flex-end;
   font-size: 6rem;
   color: azure;
-  font-weight: bolder;
 }
 
 .datum {
@@ -92,7 +94,6 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  font-weight: bold;
   color: lightgray;
   overflow: hidden;
 }
@@ -103,7 +104,12 @@ body {
   justify-content: center;
   align-items: center;
   color: rgb(233, 178, 69);
-  font-size: 3rem;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+  cursor: pointer;
+  font-size: 4rem;
 }
 
 .setting > i {
@@ -141,7 +147,6 @@ body {
   grid-template-rows: 2fr 1fr;
   color: azure;
   font-size: 6rem;
-  font-weight: bolder;
   padding-right: 25%;
 }
 
@@ -211,7 +216,7 @@ body {
   line-height: 2em;
   height: 2em;
   font-size: 1.5em;
-  font-weight: bold;
+  font-weight: bolder;
   padding: 0 1em;
   background-color: rgb(158, 161, 161);
   opacity: 0.5;
@@ -239,7 +244,6 @@ body {
 
 .github > a {
   text-decoration: none;
-  font-weight: bold;
   color: chartreuse;
 }
 
